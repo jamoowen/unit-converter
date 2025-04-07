@@ -2,12 +2,12 @@ package convert
 
 import "fmt"
 
-var HelpMessage = `
-	Usage: unit-converter <value> -from <unit> -to <unit>
+var HelpMessage = `Usage: unit-converter -val <value> -from <unit> -to <unit>
 	eg: to convert metres to yards
 	$ unit-converter 10 -from m -to yds 
 	For list of available conversions:
 	$ unit-converter --units
+
 	`
 
 var Version = "0.0.1"
@@ -20,6 +20,7 @@ var SupportedConversionsMessage = `
 		feet (ft)
 		inches (in)
 		centimetres (cm)	
+
 	`
 
-var UnsupportedUnitMessage = fmt.Sprintf("Unsupported units...\nSupported:\n%v", SupportedConversionsMessage)
+var UnsupportedUnitMessage = fmt.Sprintf("Unsupported units...\nSupported:\n%v\n", SupportedConversionsMessage)
