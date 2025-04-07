@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/jamoowen/unit-converter/convert"
 )
@@ -37,13 +38,13 @@ func main() {
 	}
 
 	if len(flag.Args()) != 1 {
-		fmt.Fprintf("Value missing from arguments")
+		fmt.Fprint(os.Stdout, "Value missing from arguments")
 		os.Exit(0)
 	}
 
 	converter := convert.NewConverter()
-	value := flag.Args()[0]
-	result, err := converter.ConvertUnits(from, to, value)
+	valueToConvert := flag.Args()[0]
+	result, err := converter.ConvertUnits(*from, *to, valueToConvert)
 	if err != nil {
 		fmt.Fprintf(os.Stdout, err)
 		os.Exit(0)
