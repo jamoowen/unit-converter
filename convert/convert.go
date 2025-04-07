@@ -34,7 +34,27 @@ func (c *Converter) getConverterForCategory(category string) (UnitConverter, err
 	}
 }
 
+func (c *Converter) validateInputs(from, to, val string) error {
+	msg := ""
+	if from == "" {
+		msg = msg + " (from) unit must be supplied"
+	}
+	if to == "" {
+		msg = msg + ", (to) unit must be supplied"
+	}
+	if val == "" {
+		msg = msg + ", (val) must be supplied"
+	}
+	if len(msg) > 0 {
+		return errors.New("Input Error:" + msg + "\n")
+	}
+	return nil
+}
+
 func (c *Converter) ConvertUnits(from, to, valueToConvert string) (float64, error) {
+	if err := c.validateInputs(from, to, valueToConvert); err != nil {
+		return 0.0, err
+	}
 	value, err := strconv.ParseFloat(valueToConvert, 64)
 	if err != nil {
 		return 0.0, errors.New(fmt.Sprintf("Invalid number :%v\n", valueToConvert))
