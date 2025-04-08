@@ -23,6 +23,30 @@ func TestNewConverter(t *testing.T) {
 			t.Errorf("Unit %s has wrong category: %s", unit, category)
 		}
 	}
+
+	for _, unit := range supportedWeightUnits {
+		if category, exists := c.CategoryMap[unit]; !exists {
+			t.Errorf("Unit %s not found in CategoryMap", unit)
+		} else if category != "weight" {
+			t.Errorf("Unit %s has wrong category: %s", unit, category)
+		}
+	}
+
+	for _, unit := range supportedTimeUnits {
+		if category, exists := c.CategoryMap[unit]; !exists {
+			t.Errorf("Unit %s not found in CategoryMap", unit)
+		} else if category != "time" {
+			t.Errorf("Unit %s has wrong category: %s", unit, category)
+		}
+	}
+
+	for _, unit := range supportedTemperatureUnits {
+		if category, exists := c.CategoryMap[unit]; !exists {
+			t.Errorf("Unit %s not found in CategoryMap", unit)
+		} else if category != "temperature" {
+			t.Errorf("Unit %s has wrong category: %s", unit, category)
+		}
+	}
 }
 
 // TestConvertUnits tests the main conversion functionality
@@ -68,6 +92,42 @@ func TestConvertUnits(t *testing.T) {
 			value:         "not a number",
 			expectError:   true,
 			errorContains: "Invalid number",
+		},
+		{
+			name:          "Valid length conversion",
+			from:          "m",
+			to:            "cm",
+			value:         "1",
+			expected:      100,
+			expectError:   false,
+			errorContains: "",
+		},
+		{
+			name:          "Valid temp conversion",
+			from:          "c",
+			to:            "f",
+			value:         "100",
+			expected:      212,
+			expectError:   false,
+			errorContains: "",
+		},
+		{
+			name:          "Valid weight conversion",
+			from:          "lbs",
+			to:            "kg",
+			value:         "250",
+			expected:      113.3980925,
+			expectError:   false,
+			errorContains: "",
+		},
+		{
+			name:          "Valid time conversion",
+			from:          "sec",
+			to:            "min",
+			value:         "120",
+			expected:      2,
+			expectError:   false,
+			errorContains: "",
 		},
 	}
 
@@ -289,12 +349,10 @@ func TestLengthConverter(t *testing.T) {
 				}
 				return
 			}
-
 			if err != nil {
 				t.Errorf("Unexpected error: %v", err)
 				return
 			}
-
 			// Use a small epsilon for float comparison
 			epsilon := 0.0001
 			if math.Abs(result-tt.expected) > epsilon {

@@ -18,10 +18,24 @@ type UnitConverter interface {
 func NewConverter() *Converter {
 	var c Converter
 	c.CategoryMap = make(map[string]string)
-	// set the map of unit to their category
+	// initialize the map of unit to their category
+
 	for _, unit := range supportedLengthUnits {
 		c.CategoryMap[unit] = "length"
 	}
+
+	for _, unit := range supportedTemperatureUnits {
+		c.CategoryMap[unit] = "temperature"
+	}
+
+	for _, unit := range supportedTimeUnits {
+		c.CategoryMap[unit] = "time"
+	}
+
+	for _, unit := range supportedWeightUnits {
+		c.CategoryMap[unit] = "weight"
+	}
+
 	return &c
 }
 
@@ -29,6 +43,12 @@ func (c *Converter) getConverterForCategory(category string) (UnitConverter, err
 	switch category {
 	case "length":
 		return &LengthConverter{}, nil
+	case "temperature":
+		return &TemperatureConverter{}, nil
+	case "time":
+		return &TimeConverter{}, nil
+	case "weight":
+		return &WeightConverter{}, nil
 	default:
 		return nil, errors.New(fmt.Sprintf("Unknown category (%v)", category))
 	}
