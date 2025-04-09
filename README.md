@@ -3,7 +3,7 @@
 A command-line tool for converting between different units of measurement.
 
 ## Version
-v0.0.1
+v0.0.2
 
 # Installation
 
@@ -13,7 +13,7 @@ v0.0.1
 ```export PATH=$PATH:~/go/bin```
 
 2. run 
-```go install github.com/jamoowen/unit-converter/cmd/unit-converter```
+```go install github.com/jamoowen/unit-converter/cmd/unit-converter@latest```
 
 ## Features
 
