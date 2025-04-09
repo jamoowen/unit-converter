@@ -3,17 +3,12 @@ package convert
 import "fmt"
 
 var HelpMessage = `Usage: unit-converter -val <value> -from <unit> -to <unit>
-	eg: to convert metres to yards
-	$ unit-converter 10 -from m -to yds 
-	For list of available conversions:
-	$ unit-converter --units
-
-	`
+For list of available conversions: $ unit-converter -units
+`
 
 var Version = "0.0.1"
 
-var SupportedConversionsMessage = `
-length: 
+var SupportedConversionsMessage = `length: 
     kilometres (km)
     metres (m)
     yards (yds)

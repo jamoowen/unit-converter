@@ -2,6 +2,9 @@
 
 A command-line tool for converting between different units of measurement.
 
+## Version
+v0.0.2
+
 ## Features
 
 - Convert between common units of:
@@ -9,6 +12,18 @@ A command-line tool for converting between different units of measurement.
   - Weight (grams, kilograms, pounds, stone, ounces)
   - Temperature (Celsius, Fahrenheit)
   - Time (milliseconds, seconds, minutes, hours, days, weeks, months, years)
+
+# Installation
+
+## If you have go installed already
+
+1. Add your go bin path to your shell (if your go path is diff you might need to change this command)
+```export PATH=$PATH:~/go/bin```
+
+2. run 
+```go install github.com/jamoowen/unit-converter/cmd/unit-converter@latest```
+
+3. Check usage below for details on how to use
 
 ## Usage
 
