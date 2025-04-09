@@ -5,6 +5,15 @@ A command-line tool for converting between different units of measurement.
 ## Version
 v0.0.2
 
+## Features
+
+- Convert between common units of:
+  - Length (kilometers, meters, yards, feet, inches, centimeters)
+  - Weight (grams, kilograms, pounds, stone, ounces)
+  - Temperature (Celsius, Fahrenheit)
+  - Time (milliseconds, seconds, minutes, hours, days, weeks, months, years)
+
+
 # Installation
 
 ## If you have go installed already
@@ -15,13 +24,7 @@ v0.0.2
 2. run 
 ```go install github.com/jamoowen/unit-converter/cmd/unit-converter@latest```
 
-## Features
-
-- Convert between common units of:
-  - Length (kilometers, meters, yards, feet, inches, centimeters)
-  - Weight (grams, kilograms, pounds, stone, ounces)
-  - Temperature (Celsius, Fahrenheit)
-  - Time (milliseconds, seconds, minutes, hours, days, weeks, months, years)
+3. Check usage below for details on how to use
 
 ## Usage
 
